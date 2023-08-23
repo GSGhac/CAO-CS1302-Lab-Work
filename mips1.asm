@@ -1,0 +1,10 @@
+.DATA
+
+msg:.asciiz"HELLO WORLD"
+
+.text
+
+li $v0,4 #4 IS USED TO PRINT THE SCREEN
+la $a0,msg #LA IS USED TO LOAD THE VALUE
+
+syscall #IS USED TO END THE PROGRAM OR ALERT
