@@ -1,0 +1,33 @@
+
+
+.data
+    newline: .asciiz "\n"  # String for a newline character
+
+.text
+    main:
+        # Prompt for a floating-point number
+        li $v0, 4           # Load system call code for printing a string
+        la $a0, prompt      # Load the address of the prompt string
+        syscall
+
+        # Read a floating-point number from the user
+        li $v0, 6           # Load system call code for reading a floating-point number
+        syscall
+        mov.s $f12, $f0     # Move the floating-point number to $f12
+
+        # Print the floating-point number
+        li $v0, 2           # Load system call code for printing a floating-point number
+        syscall
+
+        # Print a newline character
+        li $v0, 4           # Load system call code for printing a string
+        la $a0, newline     # Load the address of the newline string
+        syscall
+
+        # Exit the program
+        li $v0, 10          # Load system call code for program exit
+        syscall
+
+.data
+    prompt: .asciiz "Enter a floating-point number: "  # Prompt for user input
+

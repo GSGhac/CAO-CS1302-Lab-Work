@@ -1,0 +1,31 @@
+.data
+    newline: .asciiz "\n"  # String for a newline character
+
+.text
+    main:
+        # Prompt for an integer
+        li $v0, 4           # Load system call code for printing a string
+        la $a0, prompt      # Load the address of the prompt string
+        syscall
+
+        # Read an integer from the user
+        li $v0, 5           # Load system call code for reading an integer
+        syscall
+        move $t0, $v0       # Copy the integer read into $t0
+
+        # Print the integer
+        li $v0, 1           # Load system call code for printing an integer
+        move $a0, $t0       # Move the integer to $a0
+        syscall
+
+        # Print a newline character
+        li $v0, 4           # Load system call code for printing a string
+        la $a0, newline     # Load the address of the newline string
+        syscall
+
+        # Exit the program
+        li $v0, 10          # Load system call code for program exit
+        syscall
+
+.data
+    prompt: .asciiz "Enter an integer: "  # Prompt for user input

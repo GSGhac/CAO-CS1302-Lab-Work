@@ -1,0 +1,17 @@
+.data
+    newline:    .asciiz "\n"    # String for a newline character
+.text
+    main:
+        # Print 'A'
+        li $v0, 11          # Load system call code for printing a character
+        li $a0, 65          # Load the ASCII code for 'A' (65 in decimal)
+        syscall
+
+        # Print a newline character
+        li $v0, 4           # Load system call code for printing a string
+        la $a0, newline     # Load the address of the newline string
+        syscall
+
+        # Exit the program
+        li $v0, 10          # Load system call code for program exit
+        syscall
